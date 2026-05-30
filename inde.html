@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Eventra — Effortless Event Planning & Booking | UI Showcase</title>
+    <link rel="icon" type="image/x-icon" href="/assets/icon.png">
+    <meta name="description" content="Eventra connects event planners with customers. Discover, book, and manage events seamlessly. Download the app today!">
+    <meta name="keywords" content="event planning, event booking, tickets, events, party planning, event management, UI screens, splash screen">
+    <meta name="author" content="Eventra">
+    <meta property="og:title" content="Eventra - Effortless Event Planning & Booking">
+    <meta property="og:description" content="Connect with event planners, book tickets, and discover amazing events all in one place.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1a1a2e;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a2e;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-desc {
+            color: #666;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* UI Screens Gallery Section */
+        .ui-gallery {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #fef9ff 0%, #f0f3fe 100%);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .screens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .screen-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .screen-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -12px rgba(102,126,234,0.25);
+        }
+
+        .screen-img {
+            background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.8rem 1rem 1rem;
+            min-height: 480px;
+        }
+
+        .screen-img img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 28px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            transition: transform 0.2s;
+            max-height: 520px;
+            width: auto;
+        }
+
+        .screen-info {
+            padding: 1.5rem;
+            border-top: 1px solid #edeff5;
+        }
+
+        .screen-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-screen {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #5a4a9e;
+        }
+
+        .screen-info p {
+            color: #445566;
+            line-height: 1.5;
+            margin: 0.5rem 0 0.8rem;
+        }
+
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.6rem;
+        }
+
+        .tag {
+            background: #eff3fe;
+            border-radius: 30px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 8rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            .screen-img {
+                min-height: 380px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .apple-soon-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.7rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 600;
+            color: white;
+            margin-top: 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">Eventra</div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#ui-gallery">UI Gallery</a>
+                <a href="#download" class="btn-download">Download App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Effortless Event Planning & Booking</h1>
+            <p class="hero-subtitle">Connect with professional event planners, book tickets, and discover amazing events all in one place.</p>
+            <div class="hero-buttons">
+                <a href="https://github.com/WTiebebedigha22/Eventra/releases/download/Release/app-release.apk" class="btn-primary" id="downloadBtn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-android"></i> Download apk
+                </a>
+                <a href="#" class="btn-secondary" id="learnMoreBtn">
+                    <i class="fas fa-play"></i> Learn More
+                </a>
+            </div>
+            <div class="apple-soon-badge">
+                <i class="fab fa-apple"></i> Coming soon to Apple App Store
+                <i class="fas fa-clock"></i>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="/assets/app.jpg" alt="Eventra App Preview" onerror="this.onerror=null; this.src='https://placehold.co/400x800/667eea/white?text=Eventra+App';">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose Eventra?</h2>
+        <p class="section-subtitle">Everything you need to plan and book events seamlessly</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="feature-title">Discover Planners</h3>
+                <p class="feature-desc">Browse and search for professional event planners based on location, ratings, and service categories.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="feature-title">Direct Messaging</h3>
+                <p class="feature-desc">Instant in-app chat functionality to communicate directly with planners.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3 class="feature-title">Booking & Scheduling</h3>
+                <p class="feature-desc">Streamlined process for booking services and managing event schedules.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="feature-title">Ratings & Reviews</h3>
+                <p class="feature-desc">Read honest reviews from the community to choose reliable planners.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="feature-title">Geo-Location Services</h3>
+                <p class="feature-desc">Find events and planners near you with integrated map services.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3 class="feature-title">Secure Payments</h3>
+                <p class="feature-desc">Safe and secure transaction handling for all your bookings.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Get started in four simple steps</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Download the App</h3>
+                <p>Get Eventra from Google Play Store</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Create an Account</h3>
+                <p>Sign up in seconds with email or Google</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Discover Events</h3>
+                <p>Browse through amazing events near you</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Book & Enjoy</h3>
+                <p>Secure your tickets and have a great time!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- UI SCREENS GALLERY - Updated screens: Explore, Chats, Booking, QR Ticket, Create Event, Event View -->
+    <section class="ui-gallery" id="ui-gallery">
+        <div class="gallery-header">
+            <h2 class="section-title">Explore Eventra Screens</h2>
+            <p class="section-subtitle">Discover, chat, book, and create — all in one place</p>
+        </div>
+        <div class="screens-grid">
+            
+            <!-- 1. EXPLORE SCREEN -->
+            <div class="screen-card">
+                <div class="screen-img">
+                    <img src="/assets/explore.jpg" alt="Explore Screen - Discover Events" onerror="this.onerror=null; this.src='https://placehold.co/400x800/667eea/white?text=EXPLORE+SCREEN&font=montserrat';">
+                </div>
+                <div class="screen-info">
+                    <h3>Explore <span class="badge-screen">Discover Events</span></h3>
+                    <p>Browse trending events, filter by category, location, or date. Smart recommendations based on your interests and past attendance.</p>
+                    <div class="feature-tags">
+                        <span class="tag">AI recommendations</span>
+                        <span class="tag">Filters & search</span>
+                        <span class="tag">Nearby events</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. CHATS SCREEN -->
+            <div class="screen-card">
+                <div class="screen-img">
+                    <img src="/assets/messages.jpg" alt="Chats Screen - Messaging" onerror="this.onerror=null; this.src='https://placehold.co/400x800/764ba2/white?text=CHATS+SCREEN&font=montserrat';">
+                </div>
+                <div class="screen-info">
+                    <h3>Chats <span class="badge-screen">Real-time Messaging</span></h3>
+                    <p>Direct messaging with event planners and fellow attendees. Share media, get instant replies, and coordinate event details seamlessly.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Real-time typing</span>
+                        <span class="tag">Media sharing</span>
+                        <span class="tag">Read receipts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. BOOKING SCREEN -->
+            <div class="screen-card">
+                <div class="screen-img">
+                    <img src="/assets/booking.jpg" alt="Booking Screen - Secure Checkout" onerror="this.onerror=null; this.src='https://placehold.co/400x800/4f46e5/white?text=BOOKING+SCREEN&font=montserrat';">
+                </div>
+                <div class="screen-info">
+                    <h3>Booking <span class="badge-screen">Secure Checkout</span></h3>
+                    <p>Easy ticket selection, add-ons, and secure payment gateway. Confirm your spot in seconds with digital receipts.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Multiple payment methods</span>
+                        <span class="tag">Instant confirmation</span>
+                        <span class="tag">Booking history</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. QR TICKET SCREEN -->
+            <div class="screen-card">
+                <div class="screen-img">
+                    <img src="/assets/ticket.png" alt="QR Ticket Screen" onerror="this.onerror=null; this.src='https://placehold.co/400x800/2d3e66/white?text=QR+TICKET&font=montserrat';">
+                </div>
+                <div class="screen-info">
+                    <h3>QR Ticket <span class="badge-screen">Scan & Enter</span></h3>
+                    <p>Digital tickets with unique QR codes. Scan for entry, share with friends, and access event info offline.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Offline access</span>
+                        <span class="tag">Share tickets</span>
+                        <span class="tag">Event check-in</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. CREATE EVENT SCREEN -->
+            <div class="screen-card">
+                <div class="screen-img">
+                    <img src="/assets/post.jpg" alt="Create Event Screen" onerror="this.onerror=null; this.src='https://placehold.co/400x800/aa6eea/white?text=CREATE+EVENT&font=montserrat';">
+                </div>
+                <div class="screen-info">
+                    <h3>Create Event <span class="badge-screen">For Organizers</span></h3>
+                    <p>Plan and publish your own events. Add descriptions, set ticket prices, upload flyers, and manage attendees — all from your phone.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Event dashboard</span>
+                        <span class="tag">Ticket tiers</span>
+                        <span class="tag">Attendee management</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. EVENT VIEW SCREEN -->
+            <div class="screen-card">
+                <div class="screen-img">
+                    <img src="/assets/event.jpg" alt="Event View Screen" onerror="this.onerror=null; this.src='https://placehold.co/400x800/3b2e5e/white?text=EVENT+VIEW&font=montserrat';">
+                </div>
+                <div class="screen-info">
+                    <h3>Event View <span class="badge-screen">Full Details</span></h3>
+                    <p>Comprehensive event page with agenda, venue map, speaker lineup, and attendee list. Everything you need to know before you go.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Agenda & schedule</span>
+                        <span class="tag">Venue map</span>
+                        <span class="tag">Similar events</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">What Our Users Say</h2>
+        <p class="section-subtitle">Join thousands of satisfied users</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Eventra made planning my birthday party so easy! Found the perfect planner within minutes."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SA</div>
+                    <div>
+                        <div class="testimonial-name">Sarah Adeyemi</div>
+                        <div class="testimonial-role">Event Enthusiast</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The best event booking app in Nigeria! Seamless experience from discovery to ticket purchase."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MI</div>
+                    <div>
+                        <div class="testimonial-name">Michael Ibrahim</div>
+                        <div class="testimonial-role">Frequent Event Goer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"As an event planner, Eventra has helped me connect with amazing clients and grow my business."</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">CO</div>
+                    <div>
+                        <div class="testimonial-name">Chioma Okafor</div>
+                        <div class="testimonial-role">Event Planner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="download">
+        <h2>Ready to Get Started?</h2>
+        <p>Download Eventra now and start your event planning journey!</p>
+        <div class="cta-buttons">
+            <a href="https://github.com/WTiebebedigha22/Eventra/releases/download/Release/app-release.apk" class="btn-cta" id="downloadAppBtn" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-google-play"></i> Download for Android
+            </a>
+        </div>
+        <p style="margin-top: 1rem; color: rgba(255,255,255,0.9); font-size: 0.9rem;">
+            <i class="fab fa-apple"></i> iOS version coming soon to Apple Store
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">Eventra</div>
+                <p>Effortless Event Planning & Booking</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#ui-gallery">UI Gallery</a>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <a href="mailto:support@eventra.com"><i class="fas fa-envelope"></i> support@eventra.com</a>
+                <a href="tel:+2349063999255"><i class="fas fa-phone"></i> +234 906 399 9255</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Eventra. All rights reserved. | Designed for seamless event planning</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.style.opacity = '0';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        navLinks.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Learn more button
+        const learnMoreBtn = document.getElementById('learnMoreBtn');
+        learnMoreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('features').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
